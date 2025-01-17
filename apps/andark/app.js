@@ -149,18 +149,7 @@ const drawScale = function() {
 //// main running sequence ////
 
 // Show launcher when middle button pressed, and widgets that we're clock
-Bangle.setUI({
-  mode: "clock",
-  remove: function() {
-    Bangle.removeListener('lcdPower', updateState);
-    Bangle.removeListener('lock', updateState);
-    Bangle.removeListener('charging', draw);
-    // We clear drawTimout after removing all listeners, because they can add one again
-    if (drawTimeout) clearTimeout(drawTimeout);
-    drawTimeout = undefined;
-    require("widget_utils").show();
-  }
-});
+Bangle.setUI("clock");
 // Load widgets if needed, and make them show swipeable
 if (settings.loadWidgets) {
   Bangle.loadWidgets();
